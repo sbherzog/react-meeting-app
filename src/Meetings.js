@@ -64,10 +64,12 @@ class Meetings extends Component {
                 </div>
 
                 <div className="col-12 col-md-8 text-center mt-5">
-                    <div className="card rounded-0">
+                    
                         {this.props.meetings && this.props.meetings.length ? (
-                            <div className="card-body py-2">
-                                <h4 className="card-title font-wight-light m-0">Your Meetings</h4>
+                            <div className="card rounded-0">
+                                <div className="card-body py-2">
+                                    <h4 className="card-title font-wight-light m-0">Your Meetings</h4>
+                                </div>
                             </div>
                         ) : null }
                         {this.props.meetings &&  (
@@ -75,7 +77,6 @@ class Meetings extends Component {
                                 <MeetingList userID={this.props.userID} meetings={this.props.meetings} />
                             </div>
                         )}
-                    </div>
                 </div>
             </div>
             </div>

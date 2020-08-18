@@ -96,10 +96,12 @@ class App extends Component {
         {this.state.user && <Welcome userName={this.state.user.displayName} logOutUser={this.logOutUser} />}
         <Router >
           <Home path="/" user={this.state.user} />
+
+          <Register path="/register" registerUser={this.registerUser} />
           <Login path="/login" />
+
           <Meetings path="/meetings" addMeeting={this.addMeeting} meetings={this.state.meetings} userID={this.state.userId} />
           <CheckIn path="/checkin/:userID/:meetingID" />
-          <Register path="/register" registerUser={this.registerUser} />
           <Attendees path="/attendees/:userID/:meetingID" adminUser={this.state.userId}  />          
         </Router>
       </div>

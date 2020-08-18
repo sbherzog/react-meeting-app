@@ -20,7 +20,7 @@ class MeetingList extends Component {
     render(){
         const {meetings} = this.props;
         const myMeetings = meetings.map(item => {
-            return(
+            return (meetings.length === 0) ? null : (
                 <div className="list-group-item d-flex" key={item.meetingID}>
                     <section className="btn-group align-self-center" role="group" aria-label="Meeting Options">
                         <button className="btn btn-sm btn-outline-secondary" title="Delete Meeting" onClick={e => this.deleteMeeting(e, item.meetingID)}>
@@ -37,6 +37,7 @@ class MeetingList extends Component {
                 </div>
             )
         })
+
         return(
             <div>
                 {myMeetings}
