@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import MeetingList from './MeetingList';
-
+import FormError from './FormError';
 
 
 class Meetings extends Component {
     constructor(props){
         super(props);
         this.state = {
-            meetingName: ''
+            meetingName: '',
+            errorMessage:null,
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -18,13 +19,17 @@ class Meetings extends Component {
         const itemName = e.target.name;
         const itemValue = e.target.value;
         this.setState({[itemName]: itemValue})
+        this.setState({errorMessage: null})
     }
 
     handleSubmit(e){
         e.preventDefault();
-        console.log(this.state.meetingName)
-        this.props.addMeeting(this.state.meetingName)
-        this.setState({meetingName: ''})
+        if(this.state.meetingName !== ''){
+            this.props.addMeeting(this.state.meetingName)
+            this.setState({meetingName: ''})    
+        }else{
+            this.setState({errorMessage: 'Please fill in a meeting name'})    
+        }
     }
 
     render(){
@@ -61,6 +66,9 @@ class Meetings extends Component {
                     </form>
                     </div>
                 </div>
+                {this.state.errorMessage !== null? (
+                    <FormError theMessage={this.state.errorMessage} />
+                ) : null}
                 </div>
 
                 <div className="col-12 col-md-8 text-center mt-5">
